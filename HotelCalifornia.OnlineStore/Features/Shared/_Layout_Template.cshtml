@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Thingy Store</title>
+</head>
+<body>
+    <section class="hero is-fullheight">
+        <div class="hero-head">
+            @await Component.InvokeAsync("Nav")
+        </div>
+            <div class="hero-body">
+                <main class="container">
+                    @RenderBody()
+                </main>
+            </div>
+            <div class="hero-foot">
+                <div class="container">
+                    <div class="columns">
+                        <div class="column">
+                            <div class="has-text-left">&copy; Thingy Store @DateTime.Now.Year</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+       
+        
+        
+</body>
+</html>

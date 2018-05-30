@@ -1,0 +1,27 @@
+﻿@model HotelCalifornia.OnlineStore.Features.Home.HomeViewModel
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="columns is-multiline">
+    @foreach (var thingy in Model.Thingies)
+    {
+        <div class="column is-one-third">
+            <form method="post" asp-controller="Basket" asp-action="AddToBasket" role="form" class="card">
+                <div class="card-image">
+                    <figure class="image is-4by3">
+                        <img src="@thingy.ImagePath" alt="@thingy.Name">
+                    </figure>
+                </div>
+                <div class="card-content">
+                    <div class="content">
+                        <p class="title">@thingy.Name</p>
+                        <p class="subtitle">£@thingy.Price</p>
+                    </div>
+                    <button type="submit" value="@thingy.Id" name="thingyId" class="button">Add To Basket</button>
+                    <button type="button" class="button" data-buy-card="@thingy.Id">Buy Now</button>
+                </div>
+            </form>
+        </div>
+    }
+</div>

@@ -1,0 +1,77 @@
+﻿@model HotelCalifornia.OnlineStore.Features.Basket.BasketViewModel
+@{
+    ViewData["Title"] = "Basket";
+}
+<div class="columns">
+    <div class="column">
+        @if (Model.BasketLineItems.Any())
+        {
+            <table class="table is-fullwidth items">
+                <thead></thead>
+                <tbody>
+                @foreach (var basketLineItem in Model.BasketLineItems)
+                {
+                    <tr>
+                        <td>
+                            <figure class="image is-4by3">
+                                <img src="@basketLineItem.Thingy.ImagePath" alt="@basketLineItem.Thingy.Name"/>
+                            </figure>
+                        </td>
+                        <td style="vertical-align: middle">@basketLineItem.Thingy.Name</td>
+                        <td style="vertical-align: middle">@basketLineItem.Thingy.Price</td>
+                        <td style="vertical-align: middle">
+                            <form method="post" asp-action="RemoveFromBasket" asp-controller="Basket">
+                                <button type="submit" name="ThingyId" value="@basketLineItem.BasketItemId" class="button is-outlined is-danger">
+                                    <span>Remove</span>
+                                    <span class="icon is-small">
+                                        <i class="icon-trash-empty"></i>
+                                    </span>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <td colspan="3"></td>
+                    <td>
+                        <form method="post" asp-action="EmptyBasket" asp-controller="Basket">
+                            <button type="submit" class="button is-outlined is-danger">
+                                <span>Empty Basket</span>
+                                <span class="icon is-small">
+                                    <i class="icon-trash-empty"></i>
+                                </span>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <div class="content">
+                <h2>Your basket is empty</h2>
+                <p>Your basket is hungry and needs feeding. Click <a asp-action="Home" asp-controller="Home">here</a> to start shopping.</p>
+            </div>
+        }
+    </div>
+    <div class="column is-one-quarter">
+        <figure class="image">
+            <img src="/logo.png"/>
+        </figure>
+        <div>
+            <table class="table is-fullwidth">
+                <tr>
+                    <td>Total</td>
+                    <td>£ @Model.BasketLineItems.Sum(x => x.Thingy.Price)</td>
+                </tr>
+            </table>
+            <p>Complete your purchase. How would you like to pay?</p>
+            <div>
+                <form asp-antiforgery="true" asp-controller="Hidden" asp-action="PspSender">
+                    <button type="submit" class="button is-fullwidth" @(Model.BasketLineItems.Any() ? "" : "disabled")>Credit/Debit Card</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

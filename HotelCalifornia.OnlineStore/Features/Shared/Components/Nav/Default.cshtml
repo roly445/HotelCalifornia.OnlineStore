@@ -1,0 +1,23 @@
+﻿@model HotelCalifornia.OnlineStore.Features.Shared.Components.Nav.NavViewModel
+<nav class="navbar is-light">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item has-text-weight-bold" asp-action="Home" asp-controller="Home">Thingy Store</a>
+
+            <div class="navbar-burger burger" data-target="navMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <div class="navbar-menu" id="navMenu">
+
+            <div class="navbar-end">
+                <div class="navbar-start"><a asp-action="Basket" asp-controller="Basket" class="navbar-item">
+                                              <span class="badge" data-badge="@Model.BasketItemCount">Basket</span>
+                </a></div>
+            </div>
+        </div>
+    </div>
+</nav>

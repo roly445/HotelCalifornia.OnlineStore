@@ -1,0 +1,14 @@
+﻿@model HotelCalifornia.OnlineStore.Features.Hidden.PspSenderModel
+@{
+    Layout = null;
+}
+<html><head></head><body>
+<form method="post" action="@Model.GatewayUrl">
+    @foreach (var ele in Model.FormData)
+    {
+        <input type="hidden" value="@ele.Value" name="@ele.Key" />
+    }
+</form>
+<script>function s(){var f=document.querySelector('form');f.submit();}window.onload=s;</script>
+</body>
+</html>

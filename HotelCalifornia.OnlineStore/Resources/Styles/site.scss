@@ -1,0 +1,11 @@
+@import '../../node_modules/bulma/bulma.sass';
+@import '../../node_modules/bulma-badge/dist/bulma-badge.sass';
+@import '../Fonts/fontello/css/hotel-california.css';
+
+body {
+   .items {
+        td {
+            border: 0;
+        }
+    }   
+}

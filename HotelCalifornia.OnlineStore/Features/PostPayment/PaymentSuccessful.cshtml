@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Payment Successful";
+}
+<div class="columns">
+    <div class="column">
+        <div class="content">
+            <h2>Your payment was successful</h2>
+            <p>Thank you for your order. We have confirmed your order and we have the following reference for you:</p>
+            <p><strong>@TempData["orderRef"]</strong></p>
+        </div>
+    </div>
+    <div class="column">
+        <form class="box">
+            <p>Why don't your create an account to help track your order...</p>
+            <div class="field">
+                <label class="label">Name</label>
+                <div class="control">
+                    <input class="input" type="text" placeholder="e.g Alex Smith">
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Email</label>
+                <div class="control">
+                    <input class="input" type="email" placeholder="e.g. alexsmith@gmail.com">
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Password</label>
+                <div class="control">
+                    <input class="input" type="password" placeholder="e.g Something tandom">
+                </div>
+            </div>
+
+            <div class="control">
+                <button class="button is-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
